@@ -118,7 +118,7 @@ class _MotelItemState extends State<MotelItem> {
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeOut,
                         transform: isFavorited
-                            ? Matrix4.identity().scaled(1.2) // ✅ Correto
+                            ? Matrix4.identity().scaled(1.2) 
                             : Matrix4.identity(),
                         child: Icon(
                           isFavorited ? Icons.favorite : Icons.favorite_rounded,

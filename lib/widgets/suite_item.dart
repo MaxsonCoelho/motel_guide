@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/suite_model.dart';
-import 'suite_item_icons.dart';
 
 class SuiteItem extends StatelessWidget {
   final Suite suite;
@@ -14,24 +13,32 @@ class SuiteItem extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(10), 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-          
+
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.network(
                   suite.fotos.first,
-                  height: 180,
+                  height: 210,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(height: 8),
+              
+              SizedBox(height: 8), 
 
-            
-              SuiteItemIcons(itens: suite.itens),
+              Container(
+                height: 20, 
+                alignment: Alignment.center, 
+                child: Text(
+                  suite.nome,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ],
           ),
         ),

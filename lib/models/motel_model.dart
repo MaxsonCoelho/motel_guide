@@ -33,8 +33,8 @@ class Motel {
       qtdAvaliacoes: json['qtdAvaliacoes'] ?? 0,
       suites: suites,
       imagemSuite: (suites.isNotEmpty && suites.first.fotos.isNotEmpty)
-          ? suites.first.fotos.first // 📸 Pegando a primeira imagem da primeira suíte
-          : 'https://via.placeholder.com/150', // 🔹 Imagem padrão caso não tenha
+          ? suites.first.fotos.first 
+          : 'https://via.placeholder.com/150',
     );
   }
 

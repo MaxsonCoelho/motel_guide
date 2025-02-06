@@ -32,7 +32,6 @@ class Suite {
   }
 }
 
-// ✅ Classe que representa um período de preços
 class Periodo {
   final String tempoFormatado;
   final double valor;

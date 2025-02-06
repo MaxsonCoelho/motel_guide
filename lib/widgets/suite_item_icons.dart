@@ -5,7 +5,6 @@ class SuiteItemIcons extends StatelessWidget {
 
   SuiteItemIcons({required this.itens});
 
-  // 🔹 Mapeamento de itens para ícones correspondentes
   final Map<String, IconData> itemIcons = {
     "ducha dupla": Icons.shower,
     "TV a cabo": Icons.tv,
@@ -27,7 +26,7 @@ class SuiteItemIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> itensComIcone = itens.where((item) => itemIcons.containsKey(item)).toList();
 
-    if (itensComIcone.isEmpty) return SizedBox.shrink(); // 🔹 Se não houver ícones, não exibe nada
+    if (itensComIcone.isEmpty) return SizedBox.shrink();
 
     return Container(
       padding: EdgeInsets.all(8),
