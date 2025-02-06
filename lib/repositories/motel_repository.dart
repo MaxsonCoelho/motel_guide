@@ -1,5 +1,5 @@
-import '../services/api_service.dart';
 import '../models/motel_model.dart';
+import '../services/api_service.dart';
 
 class MotelRepository {
   final ApiService apiService;
@@ -7,6 +7,13 @@ class MotelRepository {
   MotelRepository(this.apiService);
 
   Future<List<Motel>> getMotels() async {
-    return await apiService.fetchMotels();
+    try {
+      final motels = await apiService.fetchMotels();
+      print("✅ Dados carregados do repositório: ${motels.length} motéis encontrados");
+      return motels;
+    } catch (e) {
+      print("❌ Erro no repository: $e");
+      rethrow; 
+    }
   }
 }

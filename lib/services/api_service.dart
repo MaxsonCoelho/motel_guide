@@ -1,20 +1,25 @@
-import '../models/motel_model.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io'; 
+import '../models/motel_model.dart';
 
 class ApiService {
-  final String apiUrl;
+  final String baseUrl;
 
-  ApiService(this.apiUrl);
+  ApiService(this.baseUrl);
 
   Future<List<Motel>> fetchMotels() async {
-    final response = await http.get(Uri.parse(apiUrl));
+    HttpClient client = HttpClient();
+    client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
 
-    if(response.statusCode == 200) {
-      List<dynamic> data = json.decode(response.body);
-      return data.map((item) => Motel.fromJson(item)).toList();
+    HttpClientRequest request = await client.getUrl(Uri.parse(baseUrl));
+    HttpClientResponse response = await request.close();
+
+    if (response.statusCode == 200) {
+      final jsonString = await response.transform(utf8.decoder).join();
+      final data = json.decode(jsonString);
+      return Motel.fromJsonList(data);
     } else {
-      throw Exception('Failed to load motels');
+      throw Exception('Erro ao carregar os dados. Código: ${response.statusCode}');
     }
   }
 }

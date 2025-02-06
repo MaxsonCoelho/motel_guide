@@ -3,7 +3,6 @@ import 'package:motel_guide/services/api_service.dart';
 import '../models/motel_model.dart';
 import '../repositories/motel_repository.dart';
 
-// Estado que contém a lista de motéis e status de carregamento
 class MotelNotifier extends StateNotifier<AsyncValue<List<Motel>>> {
   final MotelRepository repository;
 
@@ -22,14 +21,13 @@ class MotelNotifier extends StateNotifier<AsyncValue<List<Motel>>> {
   }
 }
 
-// Criando o provider para ser usado na UI
 final motelProvider =
     StateNotifierProvider<MotelNotifier, AsyncValue<List<Motel>>>((ref) {
   final repository = ref.watch(motelRepositoryProvider);
   return MotelNotifier(repository);
 });
 
-// Provider do repository
+
 final motelRepositoryProvider = Provider<MotelRepository>((ref) {
   return MotelRepository(ApiService('https://jsonkeeper.com/b/1IXK'));
 });
