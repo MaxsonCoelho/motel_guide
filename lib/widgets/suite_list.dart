@@ -18,38 +18,40 @@ class _SuiteListState extends State<SuiteList> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          height: 800, 
-          child: PageView.builder(
-            controller: _pageController,
-            itemCount: widget.suites.length,
-            itemBuilder: (context, index) {
-              Suite suite = widget.suites[index];
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.75, 
+      child: PageView.builder(
+        controller: _pageController,
+        itemCount: widget.suites.length,
+        itemBuilder: (context, index) {
+          Suite suite = widget.suites[index];
 
-              return Column(
-                children: [
-                  SuiteItem(suite: suite),
+          return SingleChildScrollView( 
+            child: Column(
+              mainAxisSize: MainAxisSize.min, 
+              children: [
+                SuiteItem(suite: suite),
 
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: SuiteItemIcons(itens: suite.itens),
-                  ),
+                SizedBox(height: 10),
 
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: SuitePricesList(periodos: suite.periodos),
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
-      ],
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: SuiteItemIcons(itens: suite.itens),
+                ),
+
+                SizedBox(height: 10),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: SuitePricesList(periodos: suite.periodos),
+                ),
+
+                SizedBox(height: 20), 
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

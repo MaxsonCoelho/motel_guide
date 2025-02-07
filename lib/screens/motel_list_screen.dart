@@ -34,6 +34,8 @@ class MotelListScreen extends ConsumerWidget {
                 context: context,
                 removeTop: true, 
                 child: ListView.builder(
+                  shrinkWrap: true, 
+                  physics: NeverScrollableScrollPhysics(), 
                   itemCount: motels.length,
                   itemBuilder: (ctx, i) => MotelItem(motels[i]),
                 ),

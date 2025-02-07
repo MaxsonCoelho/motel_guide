@@ -20,7 +20,7 @@ class _MotelItemState extends State<MotelItem> {
       tag: widget.motel.nome,
       child: Container(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 10), 
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -31,34 +31,40 @@ class _MotelItemState extends State<MotelItem> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 15.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26, // Cor da sombra
+                                blurRadius: 6, // Intensidade do desfoque
+                                spreadRadius: 2, // Expansão da sombra
+                                offset: Offset(0, 3), // Direção da sombra (x, y)
+                              ),
+                            ],
+                          ),
                           child: CircleAvatar(
                             backgroundImage: NetworkImage(widget.motel.imagem),
-                            radius: 30, 
+                            radius: 30,
                             backgroundColor: Colors.grey[300],
                           ),
                         ),
-
-                        SizedBox(width: 12), 
-
+                        SizedBox(width: 12),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                             
                               Text(
                                 widget.motel.nome,
                                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
                                 overflow: TextOverflow.ellipsis,
                               ),
                               SizedBox(height: 3),
-
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(widget.motel.bairro, style: TextStyle(fontSize: 14, color: const Color.fromARGB(255, 0, 0, 0))),
+                                  Text(widget.motel.bairro, style: TextStyle(fontSize: 14, color: Colors.black)),
                                   Text(
                                     '${widget.motel.distancia.toStringAsFixed(1)} km',
                                     style: TextStyle(fontSize: 12, color: Colors.blueGrey),
@@ -67,7 +73,6 @@ class _MotelItemState extends State<MotelItem> {
                               ),
 
                               SizedBox(height: 4),
-
                               Row(
                                 children: [
                                   Container(
@@ -94,7 +99,7 @@ class _MotelItemState extends State<MotelItem> {
                                   ),
                                   IconButton(
                                     icon: Icon(Icons.keyboard_arrow_down, color: Colors.black, size: 15),
-                                    onPressed: () {}, 
+                                    onPressed: () {},
                                   ),
                                 ],
                               ),
@@ -104,7 +109,6 @@ class _MotelItemState extends State<MotelItem> {
                       ],
                     ),
                   ),
-
                   Positioned(
                     top: 8,
                     right: 20,
@@ -118,7 +122,7 @@ class _MotelItemState extends State<MotelItem> {
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeOut,
                         transform: isFavorited
-                            ? Matrix4.identity().scaled(1.2) 
+                            ? Matrix4.identity().scaled(1.2)
                             : Matrix4.identity(),
                         child: Icon(
                           isFavorited ? Icons.favorite : Icons.favorite_rounded,
@@ -129,7 +133,7 @@ class _MotelItemState extends State<MotelItem> {
                     ),
                   ),
                 ],
-              ), 
+              ),
 
               SuiteList(suites: widget.motel.suites),
             ],
