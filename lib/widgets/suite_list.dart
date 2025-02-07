@@ -19,35 +19,37 @@ class _SuiteListState extends State<SuiteList> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.75, 
+      height: MediaQuery.of(context).size.height * 0.67,
       child: PageView.builder(
         controller: _pageController,
         itemCount: widget.suites.length,
         itemBuilder: (context, index) {
           Suite suite = widget.suites[index];
 
-          return SingleChildScrollView( 
-            child: Column(
-              mainAxisSize: MainAxisSize.min, 
-              children: [
-                SuiteItem(suite: suite),
+          return Padding(
+            padding: EdgeInsets.only(bottom: 0), 
+            child: SingleChildScrollView( 
+              physics: NeverScrollableScrollPhysics(),
+              child: Column(
+                mainAxisSize: MainAxisSize.min, 
+                children: [
+                  SuiteItem(suite: suite),
 
-                SizedBox(height: 10),
+                  SizedBox(height: 10),
 
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: SuiteItemIcons(itens: suite.itens),
-                ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: SuiteItemIcons(itens: suite.itens),
+                  ),
 
-                SizedBox(height: 10),
+                  SizedBox(height: 10),
 
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: SuitePricesList(periodos: suite.periodos),
-                ),
-
-                SizedBox(height: 20), 
-              ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: SuitePricesList(periodos: suite.periodos),
+                  ),
+                ],
+              ),
             ),
           );
         },

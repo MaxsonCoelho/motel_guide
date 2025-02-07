@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motel_guide/utils/format_utils.dart'; 
 import '../models/suite_model.dart';
 
 class SuitePricesList extends StatelessWidget {
@@ -27,7 +28,7 @@ class SuitePricesList extends StatelessWidget {
                             periodo.tempoFormatado,
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                           ),
-                          if (periodo.desconto != null) 
+                          if (periodo.desconto != null)
                             Padding(
                               padding: const EdgeInsets.only(left: 6),
                               child: Container(
@@ -37,26 +38,28 @@ class SuitePricesList extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Text(
-                                  '${periodo.desconto!.desconto}% off',
+                                  '${formatarDesconto(periodo.desconto!.desconto.toString())}% off', 
                                   style: TextStyle(fontSize: 14, color: Colors.green, fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
                         ],
                       ),
-
-                      SizedBox(height: 4), 
-
+                      SizedBox(height: 4),
                       Row(
                         children: [
-                          if (periodo.desconto != null) 
+                          if (periodo.desconto != null)
                             Text(
-                              'R\$ ${periodo.valor.toStringAsFixed(2)}',
-                              style: TextStyle(fontSize: 22, color: Colors.grey, decoration: TextDecoration.lineThrough),
+                              formatarPreco(periodo.valor),
+                              style: TextStyle(
+                                fontSize: 22,
+                                color: Colors.grey,
+                                decoration: TextDecoration.lineThrough,
+                              ),
                             ),
                           SizedBox(width: 6),
                           Text(
-                            'R\$ ${periodo.valorTotal.toStringAsFixed(2)}',
+                            formatarPreco(periodo.valorTotal), 
                             style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
                           ),
                         ],
@@ -64,7 +67,6 @@ class SuitePricesList extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 Container(
                   height: 40,
                   alignment: Alignment.centerRight,

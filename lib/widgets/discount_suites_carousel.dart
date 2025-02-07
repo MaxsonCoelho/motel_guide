@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:motel_guide/models/suite_model.dart';
+import 'package:motel_guide/utils/format_utils.dart';
 import '../models/motel_model.dart';
 
 class DiscountSuitesCarousel extends StatefulWidget {
@@ -153,7 +154,7 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
                                 color: Colors.grey[200],
                                 child: Center(
                                   child: Text(
-                                    "${suite['desconto']}% de desconto",
+                                    "${formatarDesconto(suite['desconto'].toString())}% de desconto",
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: const Color.fromARGB(255, 0, 0, 0),
@@ -174,7 +175,7 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "A partir de R\$ ${suite['valorAPartirDe'].toStringAsFixed(2)}",
+                                      "A partir de ${formatarPreco(suite['valorAPartirDe'])}",
                                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                                     ),
                                     SizedBox(height: 5),
