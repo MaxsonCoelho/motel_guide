@@ -26,18 +26,17 @@ class SuiteItemIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> itensComIcone = itens.where((item) => itemIcons.containsKey(item)).toList();
 
-    if (itensComIcone.isEmpty) return SizedBox.shrink(); // 🔹 Oculta se não houver ícones
+    if (itensComIcone.isEmpty) return SizedBox.shrink(); 
 
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), // 🔹 Mesma borda dos outros cards
-      elevation: 4, // 🔹 Adiciona sombra para destacar
-      margin: EdgeInsets.symmetric(vertical: 6), // 🔹 Espaçamento superior e inferior
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), 
+      elevation: 4, 
+      margin: EdgeInsets.symmetric(vertical: 6), 
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10), // 🔹 Padding interno
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // 🔹 Ícones (máximo 4)
             Row(
               children: itensComIcone.take(4).map((item) {
                 return Padding(
@@ -54,11 +53,9 @@ class SuiteItemIcons extends StatelessWidget {
               }).toList(),
             ),
 
-            // 🔹 "Ver todos" (se houver mais de 4 itens)
             if (itensComIcone.length > 4)
               GestureDetector(
                 onTap: () {
-                  // 🚀 Futuro: Exibir todos os itens em outra tela
                 },
                 child: Row(
                   children: [

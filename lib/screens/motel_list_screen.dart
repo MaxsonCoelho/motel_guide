@@ -30,9 +30,13 @@ class MotelListScreen extends ConsumerWidget {
         ),
         data: (motels) => motels.isEmpty
             ? Center(child: Text("Nenhum motel encontrado."))
-            : ListView.builder(
-                itemCount: motels.length,
-                itemBuilder: (ctx, i) => MotelItem(motels[i]),
+            : MediaQuery.removePadding( 
+                context: context,
+                removeTop: true, 
+                child: ListView.builder(
+                  itemCount: motels.length,
+                  itemBuilder: (ctx, i) => MotelItem(motels[i]),
+                ),
               ),
       ),
     );

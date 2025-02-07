@@ -20,7 +20,7 @@ class _MotelItemState extends State<MotelItem> {
       tag: widget.motel.nome,
       child: Container(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 10), 
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 10), 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

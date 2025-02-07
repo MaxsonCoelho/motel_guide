@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'widgets/custom_tab_bar.dart'; // 🔹 Importando a TabBar
+import 'widgets/custom_tab_bar.dart'; 
 import 'screens/motel_list_screen.dart';
 
 void main() {
@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTabBar(
             onTabSelected: (index) {
