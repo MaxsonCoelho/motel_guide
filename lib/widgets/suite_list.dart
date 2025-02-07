@@ -14,7 +14,6 @@ class SuiteList extends StatefulWidget {
 }
 
 class _SuiteListState extends State<SuiteList> {
-  int _currentIndex = 0; 
   PageController _pageController = PageController(viewportFraction: 0.90);
 
   @override
@@ -23,46 +22,31 @@ class _SuiteListState extends State<SuiteList> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          height: 280, 
+          height: 800, 
           child: PageView.builder(
             controller: _pageController,
             itemCount: widget.suites.length,
-            onPageChanged: (index) {
-              setState(() {
-                _currentIndex = index; 
-              });
-            },
             itemBuilder: (context, index) {
-              return SuiteItem(suite: widget.suites[index]);
+              Suite suite = widget.suites[index];
+
+              return Column(
+                children: [
+                  SuiteItem(suite: suite),
+
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: SuiteItemIcons(itens: suite.itens),
+                  ),
+
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: SuitePricesList(periodos: suite.periodos),
+                  ),
+                ],
+              );
             },
-          ),
-        ),
-
-        SizedBox(height: 8), 
-
-        AnimatedSwitcher(
-          duration: Duration(milliseconds: 300), 
-          transitionBuilder: (Widget child, Animation<double> animation) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-          child: Padding(
-            key: ValueKey(_currentIndex), 
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 4), 
-            child: SuiteItemIcons(itens: widget.suites[_currentIndex].itens),
-          ),
-        ),
-
-        SizedBox(height: 8), 
-
-        AnimatedSwitcher(
-          duration: Duration(milliseconds: 300),
-          transitionBuilder: (Widget child, Animation<double> animation) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-          child: Padding(
-            key: ValueKey(_currentIndex), 
-            padding: EdgeInsets.symmetric(horizontal: 30), 
-            child: SuitePricesList(periodos: widget.suites[_currentIndex].periodos),
           ),
         ),
       ],

@@ -33,20 +33,21 @@ class SuiteItemIcons extends StatelessWidget {
       elevation: 4, 
       margin: EdgeInsets.symmetric(vertical: 6), 
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20), 
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: itensComIcone.take(4).map((item) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  padding: EdgeInsets.symmetric(horizontal: 6), 
                   child: CircleAvatar(
                     backgroundColor: Colors.grey[300],
-                    radius: 20,
+                    radius: 18, 
                     child: Icon(
                       itemIcons[item],
                       color: Colors.black54,
+                      size: 20, 
                     ),
                   ),
                 );
@@ -59,8 +60,9 @@ class SuiteItemIcons extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Text("Ver todos", style: TextStyle(color: Colors.grey)),
-                    Icon(Icons.keyboard_arrow_down, color: Colors.grey),
+                    Text("Ver todos", style: TextStyle(color: Colors.grey, fontSize: 14)),
+                    SizedBox(width: 5), 
+                    Icon(Icons.keyboard_arrow_down, color: Colors.grey, size: 18),
                   ],
                 ),
               ),
