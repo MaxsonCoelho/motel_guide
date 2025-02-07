@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/suite_model.dart';
+import '../../models/suite_model.dart';
 import 'suite_item.dart';
 import 'suite_item_icons.dart';
 import 'suite_prices_list.dart';

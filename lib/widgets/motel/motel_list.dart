@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../providers/motel_provider.dart';
-import '../widgets/motel_item.dart';
-import '../widgets/motel_shimmer.dart';
+import '../../providers/motel_provider.dart';
+import 'motel_item.dart';
+import 'motel_shimmer.dart';
 
-class MotelListScreen extends ConsumerWidget {
+class MotelList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final motelState = ref.watch(motelProvider);

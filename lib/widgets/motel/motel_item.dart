@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/motel_model.dart';
-import '../widgets/suite_list.dart';
+import '../../models/motel_model.dart';
+import '../suite/suite_list.dart';
 
 class MotelItem extends StatefulWidget {
   final Motel motel;

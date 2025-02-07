@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:motel_guide/models/suite_model.dart';
 import 'package:motel_guide/utils/format_utils.dart';
 import 'package:motel_guide/widgets/reserve_button.dart';
-import '../models/motel_model.dart';
+import '../../models/motel_model.dart';
 
 class DiscountSuitesList extends StatelessWidget {
   final List<Motel> moteis;

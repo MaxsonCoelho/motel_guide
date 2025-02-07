@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motel_guide/utils/format_utils.dart'; 
-import '../models/suite_model.dart';
+import '../../models/suite_model.dart';
 
 class SuitePricesList extends StatelessWidget {
   final List<Periodo> periodos;

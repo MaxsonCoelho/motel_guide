@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:motel_guide/models/suite_model.dart';
 import 'package:motel_guide/utils/format_utils.dart';
-import '../models/motel_model.dart';
+import '../../models/motel_model.dart';
 
 class DiscountSuitesCarousel extends StatefulWidget {
   final List<Motel> moteis;
