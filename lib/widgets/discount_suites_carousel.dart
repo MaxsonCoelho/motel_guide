@@ -156,9 +156,9 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
                                     "${suite['desconto']}% de desconto",
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: Colors.green,
+                                      color: const Color.fromARGB(255, 0, 0, 0),
                                       decoration: TextDecoration.underline,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),

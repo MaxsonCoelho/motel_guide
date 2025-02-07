@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:motel_guide/providers/motel_provider.dart';
 import 'package:motel_guide/widgets/discount_suites_carousel.dart';
-import 'widgets/custom_tab_bar.dart'; 
+import 'package:motel_guide/widgets/filter_bar.dart';
+import 'widgets/custom_tab_bar.dart';
 import 'screens/motel_list_screen.dart';
 
 void main() {
@@ -39,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize( 
-        preferredSize: Size.fromHeight(100), 
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100),
         child: CustomTabBar(
           onTabSelected: (index) {
             setState(() {
@@ -49,22 +50,28 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ),
-      body: SingleChildScrollView( 
-        child: Column(
-          children: [
-            Consumer(
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Consumer(
               builder: (context, ref, _) {
                 final motelState = ref.watch(motelProvider);
-
                 return motelState.maybeWhen(
                   data: (moteis) => DiscountSuitesCarousel(moteis: moteis),
                   orElse: () => SizedBox.shrink(),
                 );
               },
             ),
-            MotelListScreen(),
-          ],
-        ),
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            floating: false,
+            delegate: StickyFilterBar(), 
+          ),
+          SliverToBoxAdapter(
+            child: MotelListScreen(),
+          ),
+        ],
       ),
     );
   }
