@@ -16,7 +16,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
     double topPadding = MediaQuery.of(context).padding.top;
-    double extraPadding = Platform.isIOS && topPadding > 30 ? 60 : 10;
+    double extraPadding = Platform.isIOS && topPadding > 30 ? 60 : 30;
 
     return Column(
       children: [
