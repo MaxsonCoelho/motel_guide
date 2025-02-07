@@ -8,7 +8,7 @@ class SuiteItemIcons extends StatelessWidget {
   final Map<String, IconData> itemIcons = {
     "ducha dupla": Icons.shower,
     "TV a cabo": Icons.tv,
-    "TV LED 32''": Icons.tv,
+    "TV LED 32''": Icons.live_tv,
     "iluminação por leds": Icons.lightbulb,
     "garagem coletiva": Icons.directions_car,
     "som AM/FM": Icons.speaker,
@@ -29,9 +29,8 @@ class SuiteItemIcons extends StatelessWidget {
     if (itensComIcone.isEmpty) return SizedBox.shrink(); 
 
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), 
-      elevation: 4, 
-      margin: EdgeInsets.symmetric(vertical: 6), 
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), 
+      margin: EdgeInsets.symmetric(vertical: 0), 
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20), 
         child: Row(

@@ -12,8 +12,8 @@ class SuitePricesList extends StatelessWidget {
     return Column(
       children: periodos.map((periodo) {
         return Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          margin: EdgeInsets.symmetric(vertical: 4),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          margin: EdgeInsets.symmetric(vertical: 3),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: Row(

@@ -5,7 +5,7 @@ import 'package:motel_guide/widgets/suite/discount_suites_carousel.dart';
 import 'package:motel_guide/widgets/suite/discount_suites_list.dart';
 import 'package:motel_guide/widgets/filter_bar.dart';
 import '../widgets/custom_tab_bar.dart';
-import '../widgets/motel/motel_list.dart';  // ✅ Importando novo widget
+import '../widgets/motel/motel_list.dart'; 
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -30,6 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: CustomScrollView(
         slivers: [
+          // TabBar personalizada
+          SliverPersistentHeader(
+            pinned: true,
+            floating: false,
+            delegate: StickyFilterBar(),
+          ),
+          // Carrossel com descontos
           SliverToBoxAdapter(
             child: Consumer(
               builder: (context, ref, _) {
@@ -41,14 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
-          SliverPersistentHeader(
-            pinned: true,
-            floating: false,
-            delegate: StickyFilterBar(),
-          ),
+          // Lista de hotéis com suítes
           SliverToBoxAdapter(
-            child: MotelList(),  // ✅ Agora usa o novo widget
+            child: MotelList(),  
           ),
+          // Carrossel com descontos incríveis
           SliverToBoxAdapter(
             child: Consumer(
               builder: (context, ref, _) {
@@ -61,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SliverPadding(
-            padding: EdgeInsets.only(bottom: 30), 
+            padding: EdgeInsets.only(bottom: 40), 
           ),
         ],
       ),

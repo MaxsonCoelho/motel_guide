@@ -19,7 +19,7 @@ class _SuiteListState extends State<SuiteList> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.67,
+      height: MediaQuery.of(context).size.height * 0.63,
       child: PageView.builder(
         controller: _pageController,
         itemCount: widget.suites.length,
@@ -35,14 +35,14 @@ class _SuiteListState extends State<SuiteList> {
                 children: [
                   SuiteItem(suite: suite),
 
-                  SizedBox(height: 10),
+                  SizedBox(height: 3),
 
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: SuiteItemIcons(itens: suite.itens),
                   ),
 
-                  SizedBox(height: 10),
+                  SizedBox(height: 3),
 
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),

@@ -89,7 +89,7 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
     return Column(
       children: [
         SizedBox(
-          height: 210,
+          height: 230,
           child: PageView.builder(
             controller: _pageController,
             itemCount: _suitesComDesconto.length,
@@ -102,10 +102,10 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
               final suite = _suitesComDesconto[index];
 
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0),
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 15),
                 child: Card(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  elevation: 4,
+                  elevation: 2,
                   margin: EdgeInsets.symmetric(horizontal: 10),
                   child: Padding(
                     padding: EdgeInsets.all(5),
@@ -148,29 +148,34 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
 
                               SizedBox(height: 8),
 
-                              Container(
-                                padding: EdgeInsets.symmetric(vertical: 5),
-                                width: double.infinity,
-                                color: Colors.grey[200],
-                                child: Center(
-                                  child: Text(
-                                    "${formatarDesconto(suite['desconto'].toString())}% de desconto",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                      decoration: TextDecoration.underline,
-                                      fontWeight: FontWeight.w600,
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(5), 
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  width: double.infinity,
+                                  color: Colors.grey[200],
+                                  child: Center(
+                                    child: Text(
+                                      "${formatarDesconto(suite['desconto'].toString())}% de desconto",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: const Color.fromARGB(255, 0, 0, 0),
+                                        decoration: TextDecoration.underline,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-
                               SizedBox(height: 8),
 
                               Container(
-                                padding: EdgeInsets.all(8),
+                                padding: EdgeInsets.symmetric(vertical: 10),
                                 width: double.infinity,
-                                color: Colors.grey[200],
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(8), 
+                                ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
@@ -179,7 +184,6 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
                                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                                     ),
                                     SizedBox(height: 5),
-
                                     SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton(
@@ -216,15 +220,15 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
           ),
         ),
 
-        SizedBox(height: 8),
+        SizedBox(height: 5),
 
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(_suitesComDesconto.length, (index) {
             return Container(
               margin: EdgeInsets.symmetric(horizontal: 4),
-              width: 8,
-              height: 8,
+              width: _currentIndex == index ? 12 : 8,
+              height: _currentIndex == index ? 12 : 8,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _currentIndex == index ? Colors.red : Colors.grey[400],
@@ -232,6 +236,7 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
             );
           }),
         ),
+        SizedBox(height: 10),
       ],
     );
   }

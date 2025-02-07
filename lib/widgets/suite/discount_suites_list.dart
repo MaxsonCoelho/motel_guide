@@ -16,7 +16,7 @@ class DiscountSuitesList extends StatelessWidget {
     if (suitesComDesconto.isEmpty) return SizedBox.shrink();
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -28,7 +28,7 @@ class DiscountSuitesList extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 280,
+            height: 400,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.symmetric(horizontal: 5),
@@ -50,13 +50,13 @@ class DiscountSuitesList extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           child: Image.network(
                             suite['foto'],
-                            height: 270,
+                            height: 500,
                             width: 400,
                             fit: BoxFit.cover,
                           ),
                         ),
                         Positioned(
-                          bottom: 20,
+                          bottom: 10,
                           left: 10,
                           right: 10,
                           child: Container(
@@ -81,7 +81,7 @@ class DiscountSuitesList extends StatelessWidget {
                                         style: TextStyle(fontWeight: FontWeight.bold),
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      SizedBox(height: 10),
+                                      SizedBox(height: 15),
                                       Text(
                                         suite['bairro'],
                                         style: TextStyle(color: Color.fromARGB(255, 51, 51, 51)),

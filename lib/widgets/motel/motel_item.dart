@@ -20,7 +20,7 @@ class _MotelItemState extends State<MotelItem> {
       tag: widget.motel.nome,
       child: Container(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 2),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -37,10 +37,10 @@ class _MotelItemState extends State<MotelItem> {
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black26, // Cor da sombra
-                                blurRadius: 6, // Intensidade do desfoque
-                                spreadRadius: 2, // Expansão da sombra
-                                offset: Offset(0, 3), // Direção da sombra (x, y)
+                                color: Colors.black26, 
+                                blurRadius: 6, 
+                                spreadRadius: 2, 
+                                offset: Offset(0, 3),
                               ),
                             ],
                           ),
@@ -60,7 +60,6 @@ class _MotelItemState extends State<MotelItem> {
                                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(height: 3),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
