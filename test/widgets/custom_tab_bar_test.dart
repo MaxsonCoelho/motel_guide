@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:motel_guide/widgets/custom_tab_bar.dart'; 
+import 'package:motel_guide/widgets/custom_tab_bar.dart';
 
-void main() {
+void main() { 
   testWidgets('CustomTabBar deve ser renderizado corretamente', (WidgetTester tester) async {
     int selectedTab = -1;
-    expect(selectedTab, isNotNull); 
+    expect(selectedTab, isNotNull);
 
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
@@ -52,7 +52,7 @@ void main() {
 
   testWidgets('Deve chamar o callback ao clicar no menu e pesquisa', (WidgetTester tester) async {
     int selectedTab = -1;
-    expect(selectedTab, isNotNull); 
+    expect(selectedTab, isNotNull);
 
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(

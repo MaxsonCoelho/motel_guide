@@ -1,4 +1,4 @@
-import 'dart:io'; 
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:motel_guide/models/suite_model.dart';
 import 'package:motel_guide/utils/format_utils.dart';
@@ -38,34 +38,31 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: Text(
-              "🔥 Descontos Incríveis",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      padding: EdgeInsets.all(10), 
+      child: Container(
+        padding: EdgeInsets.all(10),
+        color: Colors.white, 
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: Text(
+                "🔥 Descontos Incríveis",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          SizedBox(
-            height: screenHeight * 0.5,
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: suitesComDesconto.length,
-              physics: PageScrollPhysics(),
-              itemBuilder: (context, index) {
-                final suite = suitesComDesconto[index];
+            SizedBox(
+              height: screenHeight * 0.5,
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: suitesComDesconto.length,
+                physics: PageScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final suite = suitesComDesconto[index];
 
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
-                  child: Container(
-                    width: screenWidth * 0.9,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     child: Stack(
                       children: [
                         ClipRRect(
@@ -78,7 +75,7 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
                           ),
                         ),
                         Positioned(
-                          bottom: Platform.isIOS ? 60 : 50, 
+                          bottom: Platform.isIOS ? 60 : 50,
                           left: 10,
                           right: 10,
                           child: Container(
@@ -139,12 +136,12 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
                         ),
                       ],
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -155,7 +152,7 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
     for (var motel in widget.moteis) {
       for (var suite in motel.suites) {
         var periodoComDesconto = suite.periodos.firstWhere(
-          (p) => p.desconto != null,
+              (p) => p.desconto != null,
           orElse: () => Periodo(
             tempoFormatado: '',
             valor: 0,

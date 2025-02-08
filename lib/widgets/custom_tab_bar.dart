@@ -16,47 +16,50 @@ class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
     double topPadding = MediaQuery.of(context).padding.top;
-    double extraPadding = Platform.isIOS && topPadding > 30 ? 60 : 30;
+    double extraPadding = Platform.isIOS && topPadding > 30 ? 60 : 25;
 
     return Column(
       children: [
         ClipPath(
-          clipper: TabBarClipper(), 
+          clipper: TabBarClipper(),
           child: Container(
-            padding: EdgeInsets.only(top: extraPadding, left: 10, right: 10, bottom: 10),
+            padding: EdgeInsets.only(top: extraPadding, left: 10, right: 10, bottom: 5),
             color: const Color.fromARGB(255, 255, 17, 0),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buildTransparentButton(Icons.menu, onPressed: () {
-                      widget.onTabSelected(0);
-                    }),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red[900],
-                        borderRadius: BorderRadius.circular(20),
+                Padding(
+                  padding: EdgeInsets.only(top: Platform.isAndroid ? 5 : 0), 
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildTransparentButton(Icons.menu, onPressed: () {
+                        widget.onTabSelected(0);
+                      }),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red[900],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          children: [
+                            _buildSelectableButton(
+                              icon: Icons.flash_on,
+                              text: "Ir Agora",
+                              index: 1,
+                            ),
+                            _buildSelectableButton(
+                              icon: Icons.calendar_today,
+                              text: "Ir Outro Dia",
+                              index: 2,
+                            ),
+                          ],
+                        ),
                       ),
-                      child: Row(
-                        children: [
-                          _buildSelectableButton(
-                            icon: Icons.flash_on,
-                            text: "Ir Agora",
-                            index: 1,
-                          ),
-                          _buildSelectableButton(
-                            icon: Icons.calendar_today,
-                            text: "Ir Outro Dia",
-                            index: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                    _buildTransparentButton(Icons.search, onPressed: () {
-                      widget.onTabSelected(3);
-                    }),
-                  ],
+                      _buildTransparentButton(Icons.search, onPressed: () {
+                        widget.onTabSelected(3);
+                      }),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 17),
                 GestureDetector(
@@ -129,7 +132,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
 class TabBarClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    double radius = 25; 
+    double radius = 25;
 
     Path path = Path();
     path.lineTo(0, size.height - radius);
