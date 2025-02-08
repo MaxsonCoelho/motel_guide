@@ -28,19 +28,16 @@ class __FilterBarState extends State<_FilterBar> {
   int _blinkCount = 0;
   final double _buttonWidth = 120;
   final Set<int> _selectedFilters = {};
+  late Timer _blinkTimer; // ✅ Adicionado para evitar erro nos testes
 
   @override
   void initState() {
     super.initState();
 
-    Timer.periodic(Duration(milliseconds: 700), (timer) {
+    _blinkTimer = Timer.periodic(Duration(milliseconds: 700), (timer) {
       if (mounted) {
         setState(() {
-          if (_blinkCount < 6) {
-            _blinkCount++;
-          } else {
-            _blinkCount = -5; 
-          }
+          _blinkCount = (_blinkCount < 6) ? _blinkCount + 1 : -5;
         });
       }
     });
@@ -49,22 +46,10 @@ class __FilterBarState extends State<_FilterBar> {
       double maxScroll = _scrollController.position.maxScrollExtent;
       double currentScroll = _scrollController.offset;
 
-      if (currentScroll >= maxScroll) {
-        setState(() {
-          _showRightArrow = false;
-          _showLeftArrow = true;
-        });
-      } else if (currentScroll <= 0) {
-        setState(() {
-          _showLeftArrow = false;
-          _showRightArrow = true;
-        });
-      } else {
-        setState(() {
-          _showRightArrow = true;
-          _showLeftArrow = false;
-        });
-      }
+      setState(() {
+        _showRightArrow = currentScroll < maxScroll;
+        _showLeftArrow = currentScroll > 0;
+      });
     });
   }
 
@@ -73,7 +58,7 @@ class __FilterBarState extends State<_FilterBar> {
     double newOffset = isRight ? currentOffset + (_buttonWidth * 2) : currentOffset - (_buttonWidth * 2);
 
     _scrollController.animateTo(
-      newOffset.clamp(0, _scrollController.position.maxScrollExtent), 
+      newOffset.clamp(0, _scrollController.position.maxScrollExtent),
       duration: Duration(milliseconds: 400),
       curve: Curves.easeOut,
     );
@@ -81,11 +66,9 @@ class __FilterBarState extends State<_FilterBar> {
 
   void _toggleFilter(int index) {
     setState(() {
-      if (_selectedFilters.contains(index)) {
-        _selectedFilters.remove(index);
-      } else {
-        _selectedFilters.add(index);
-      }
+      _selectedFilters.contains(index)
+          ? _selectedFilters.remove(index)
+          : _selectedFilters.add(index);
     });
   }
 
@@ -109,15 +92,15 @@ class __FilterBarState extends State<_FilterBar> {
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             itemCount: _filters.length,
             itemBuilder: (context, index) {
-              bool isSelected = _selectedFilters.contains(index); 
+              bool isSelected = _selectedFilters.contains(index);
 
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5),
                 child: OutlinedButton.icon(
-                  onPressed: () => _toggleFilter(index), 
+                  onPressed: () => _toggleFilter(index),
                   style: OutlinedButton.styleFrom(
                     padding: EdgeInsets.all(4),
-                    backgroundColor: isSelected ? const Color.fromARGB(255, 255, 17, 0) : Colors.white, 
+                    backgroundColor: isSelected ? const Color.fromARGB(255, 255, 17, 0) : Colors.white,
                     side: BorderSide(
                       color: Color.fromARGB(255, 120, 120, 120),
                       width: 0.5,
@@ -125,12 +108,12 @@ class __FilterBarState extends State<_FilterBar> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    foregroundColor: isSelected ? Colors.white : Colors.black, 
+                    foregroundColor: isSelected ? Colors.white : Colors.black,
                   ),
                   icon: Icon(
                     _filters[index]['icon'],
                     size: 16,
-                    color: isSelected ? Colors.white : Colors.black, 
+                    color: isSelected ? Colors.white : Colors.black,
                   ),
                   label: Padding(
                     padding: EdgeInsets.all(5),
@@ -138,7 +121,7 @@ class __FilterBarState extends State<_FilterBar> {
                       _filters[index]['text'],
                       style: TextStyle(
                         fontSize: 12,
-                        color: isSelected ? Colors.white : Colors.black, 
+                        color: isSelected ? Colors.white : Colors.black,
                       ),
                     ),
                   ),
@@ -150,22 +133,22 @@ class __FilterBarState extends State<_FilterBar> {
 
         if (_showRightArrow)
           Positioned(
-            right: 1.5, 
+            right: 1.5,
             top: 0,
             bottom: 0,
             child: GestureDetector(
-              onTap: () => _scroll(true), 
+              onTap: () => _scroll(true),
               child: _buildArrow(Icons.keyboard_arrow_right),
             ),
           ),
 
         if (_showLeftArrow)
           Positioned(
-            left: 1.5, 
+            left: 1.5,
             top: 0,
             bottom: 0,
             child: GestureDetector(
-              onTap: () => _scroll(false), 
+              onTap: () => _scroll(false),
               child: _buildArrow(Icons.keyboard_arrow_left),
             ),
           ),
@@ -175,17 +158,17 @@ class __FilterBarState extends State<_FilterBar> {
 
   Widget _buildArrow(IconData icon) {
     return AnimatedOpacity(
-      opacity: (_blinkCount >= 0) ? 0.8 : 0.0, 
+      opacity: (_blinkCount >= 0) ? 0.8 : 0.0,
       duration: Duration(milliseconds: 500),
       child: Container(
         width: 30,
         alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-        ),
+        decoration: BoxDecoration(color: Colors.transparent),
         child: Icon(
           icon,
-          color: (_blinkCount % 2 == 0) ? const Color.fromARGB(255, 255, 17, 0) : const Color.fromARGB(255, 130, 130, 130), 
+          color: (_blinkCount % 2 == 0)
+              ? const Color.fromARGB(255, 255, 17, 0)
+              : const Color.fromARGB(255, 130, 130, 130),
           size: 35,
         ),
       ),
@@ -194,6 +177,7 @@ class __FilterBarState extends State<_FilterBar> {
 
   @override
   void dispose() {
+    _blinkTimer.cancel(); // ✅ Cancela o Timer ao destruir o widget
     _scrollController.dispose();
     super.dispose();
   }
