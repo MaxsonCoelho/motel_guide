@@ -5,9 +5,8 @@ import 'package:mockito/mockito.dart';
 import 'package:motel_guide/models/motel_model.dart';
 import 'package:motel_guide/providers/motel_provider.dart';
 import 'package:motel_guide/repositories/motel_repository.dart';
-import 'motel_provider_test.mocks.dart'; // 🔹 Importa os mocks gerados
+import 'motel_provider_test.mocks.dart'; 
 
-// 🔹 Gera automaticamente um mock seguro para MotelRepository
 @GenerateNiceMocks([MockSpec<MotelRepository>()])
 void main() {
   late MotelNotifier motelNotifier;
@@ -20,7 +19,6 @@ void main() {
   test('Estado inicial deve ser AsyncValue.loading()', () {
     motelNotifier = MotelNotifier(mockRepository);
     
-    // 🔹 O estado inicial deve ser AsyncLoading, independentemente do tipo
     expect(motelNotifier.state, isA<AsyncLoading>());
   });
 
@@ -38,7 +36,6 @@ void main() {
       ),
     ];
 
-    // 🔹 Simula um retorno válido para `getMotels()`
     when(mockRepository.getMotels()).thenAnswer((_) async => fakeMotels);
 
     motelNotifier = MotelNotifier(mockRepository);
@@ -50,7 +47,6 @@ void main() {
   test('fetchMotels() deve retornar erro se a requisição falhar', () async {
     final exception = Exception('Erro ao carregar motéis');
 
-    // 🔹 Simula um erro ao chamar `getMotels()`
     when(mockRepository.getMotels()).thenThrow(exception);
 
     motelNotifier = MotelNotifier(mockRepository);
