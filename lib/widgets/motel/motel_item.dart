@@ -70,7 +70,6 @@ class _MotelItemState extends State<MotelItem> {
                                   ),
                                 ],
                               ),
-
                               SizedBox(height: 4),
                               Row(
                                 children: [

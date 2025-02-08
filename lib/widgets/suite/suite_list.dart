@@ -34,16 +34,12 @@ class _SuiteListState extends State<SuiteList> {
                 mainAxisSize: MainAxisSize.min, 
                 children: [
                   SuiteItem(suite: suite),
-
                   SizedBox(height: 3),
-
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: SuiteItemIcons(itens: suite.itens),
                   ),
-
                   SizedBox(height: 3),
-
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: SuitePricesList(periodos: suite.periodos),

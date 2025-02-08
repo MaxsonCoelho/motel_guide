@@ -33,7 +33,6 @@ class _CustomTabBarState extends State<CustomTabBar> {
                     _buildTransparentButton(Icons.menu, onPressed: () {
                       widget.onTabSelected(0);
                     }),
-
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.red[900],
@@ -54,15 +53,12 @@ class _CustomTabBarState extends State<CustomTabBar> {
                         ],
                       ),
                     ),
-
                     _buildTransparentButton(Icons.search, onPressed: () {
                       widget.onTabSelected(3);
                     }),
                   ],
                 ),
-
-                SizedBox(height: 10),
-
+                SizedBox(height: 17),
                 GestureDetector(
                   onTap: () {},
                   child: Row(
@@ -133,11 +129,17 @@ class _CustomTabBarState extends State<CustomTabBar> {
 class TabBarClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    double curveHeight = 22; 
+    double radius = 25; 
+
     Path path = Path();
-    path.lineTo(0, size.height - curveHeight);
-    path.quadraticBezierTo(size.width * 0.25, size.height, size.width * 0.5, size.height);
-    path.quadraticBezierTo(size.width * 0.75, size.height, size.width, size.height - curveHeight);
+    path.lineTo(0, size.height - radius);
+
+    path.quadraticBezierTo(0, size.height, radius, size.height);
+
+    path.lineTo(size.width - radius, size.height);
+
+    path.quadraticBezierTo(size.width, size.height, size.width, size.height - radius);
+
     path.lineTo(size.width, 0);
     path.close();
 

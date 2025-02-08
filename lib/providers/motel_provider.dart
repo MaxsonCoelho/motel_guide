@@ -14,9 +14,13 @@ class MotelNotifier extends StateNotifier<AsyncValue<List<Motel>>> {
     state = const AsyncValue.loading();
     try {
       final motels = await repository.getMotels();
-      state = AsyncValue.data(motels);
+      if (mounted) { 
+        state = AsyncValue.data(motels);
+      }
     } catch (e) {
-      state = AsyncValue.error(e, StackTrace.current);
+      if (mounted) { 
+        state = AsyncValue.error(e, StackTrace.current);
+      }
     }
   }
 }

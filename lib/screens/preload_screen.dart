@@ -19,27 +19,23 @@ class _PreloadScreenState extends State<PreloadScreen> with SingleTickerProvider
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 3000), 
+      duration: Duration(milliseconds: 3000),
     );
-
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Interval(0.0, 0.3, curve: Curves.easeIn)),
-    );
-
-    Future.delayed(Duration(seconds: 2), () {
-      _controller.forward();
-    });
 
     _scaleAnimation = Tween<double>(begin: 1.0, end: 10.0).animate(
-      CurvedAnimation(parent: _controller, curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn)),
+      CurvedAnimation(parent: _controller, curve: Interval(0.4, 1.0, curve: Curves.fastOutSlowIn)),
     );
 
     _opacityAnimation = TweenSequence<double>([
       TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.0), weight: 40), 
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.0), weight: 60),
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.0), weight: 60), 
     ]).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+      CurvedAnimation(parent: _controller, curve: Interval(0.4, 1.0, curve: Curves.easeInOut)),
     );
+
+    Future.delayed(Duration(milliseconds: 1000), () {
+      _controller.forward();
+    });
 
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -48,8 +44,6 @@ class _PreloadScreenState extends State<PreloadScreen> with SingleTickerProvider
         );
       }
     });
-
-    _controller.forward();
   }
 
   @override
@@ -61,7 +55,7 @@ class _PreloadScreenState extends State<PreloadScreen> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 17, 0), 
+      backgroundColor: const Color.fromARGB(255, 255, 17, 0),
       body: Center(
         child: AnimatedBuilder(
           animation: _controller,
@@ -72,7 +66,7 @@ class _PreloadScreenState extends State<PreloadScreen> with SingleTickerProvider
                 opacity: _opacityAnimation.value,
                 child: SvgPicture.asset(
                   'assets/images/logo-guia-de-moteis.svg',
-                  width: 300, 
+                  width: 300,
                 ),
               ),
             );

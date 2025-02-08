@@ -49,7 +49,6 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
-
           SizedBox(
             height: screenHeight * 0.5,
             child: PageView.builder(
@@ -78,7 +77,6 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
                             fit: BoxFit.cover,
                           ),
                         ),
-
                         Positioned(
                           bottom: Platform.isIOS ? 60 : 50, 
                           left: 10,
@@ -117,9 +115,7 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
                                     ],
                                   ),
                                 ),
-
                                 SizedBox(width: 10),
-
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.center,

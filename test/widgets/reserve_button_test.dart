@@ -4,7 +4,7 @@ import 'package:motel_guide/widgets/reserve_button.dart';
 
 void main() {
   testWidgets('ReserveButton aparece na tela', (WidgetTester tester) async {
-    // Renderiza o botão na tela
+    //Renderiza o botão na tela
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
@@ -13,7 +13,7 @@ void main() {
       ),
     );
 
-    // Verifica se o texto "Reservar >" aparece
+    //Verifica se o texto "Reservar >" aparece
     expect(find.text('Reservar >'), findsOneWidget);
   });
 
@@ -32,7 +32,7 @@ void main() {
       ),
     );
 
-    // Simula um clique no botão
+    //Simula um clique no botão
     await tester.tap(find.byType(ReserveButton));
     await tester.pump(); // Atualiza a UI
 

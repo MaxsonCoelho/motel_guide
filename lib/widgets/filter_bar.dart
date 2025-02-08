@@ -28,7 +28,7 @@ class __FilterBarState extends State<_FilterBar> {
   int _blinkCount = 0;
   final double _buttonWidth = 120;
   final Set<int> _selectedFilters = {};
-  late Timer _blinkTimer; // ✅ Adicionado para evitar erro nos testes
+  late Timer _blinkTimer; 
 
   @override
   void initState() {
@@ -177,7 +177,7 @@ class __FilterBarState extends State<_FilterBar> {
 
   @override
   void dispose() {
-    _blinkTimer.cancel(); // ✅ Cancela o Timer ao destruir o widget
+    _blinkTimer.cancel(); 
     _scrollController.dispose();
     super.dispose();
   }

@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:motel_guide/models/motel_model.dart';
 import 'package:motel_guide/providers/motel_provider.dart';
 import 'package:motel_guide/repositories/motel_repository.dart';
-import 'motel_provider_test.mocks.dart'; 
+import '../mocks/motel_provider_test.mocks.dart'; 
 
 @GenerateNiceMocks([MockSpec<MotelRepository>()])
 void main() {

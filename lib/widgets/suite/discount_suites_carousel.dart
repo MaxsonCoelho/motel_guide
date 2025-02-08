@@ -120,7 +120,6 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
                             fit: BoxFit.cover,
                           ),
                         ),
-
                         SizedBox(width: 8),
                         Expanded(
                           child: Column(
@@ -145,9 +144,7 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
                                   ],
                                 ),
                               ),
-
                               SizedBox(height: 8),
-
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(5), 
                                 child: Container(
@@ -168,7 +165,6 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
                                 ),
                               ),
                               SizedBox(height: 8),
-
                               Container(
                                 padding: EdgeInsets.symmetric(vertical: 10),
                                 width: double.infinity,
@@ -219,9 +215,7 @@ class _DiscountSuitesCarouselState extends State<DiscountSuitesCarousel> {
             },
           ),
         ),
-
         SizedBox(height: 5),
-
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(_suitesComDesconto.length, (index) {
