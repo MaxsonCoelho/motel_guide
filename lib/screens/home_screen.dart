@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:motel_guide/providers/motel_provider.dart';
+import 'package:motel_guide/providers/theme_provider.dart';
 import 'package:motel_guide/widgets/suite/discount_suites_carousel.dart';
 import 'package:motel_guide/widgets/suite/discount_suites_list.dart';
 import 'package:motel_guide/widgets/filter_bar.dart';
@@ -16,13 +17,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   int selectedTab = 1;
 
   Future<void> _refreshData() async {
-    ref.invalidate(motelProvider); 
-    await Future.delayed(Duration(milliseconds: 500)); 
+    ref.invalidate(motelProvider);
+    await Future.delayed(Duration(milliseconds: 500));
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = ref.watch(themeProvider);
+
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100),
         child: CustomTabBar(
@@ -34,7 +38,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
       ),
       body: RefreshIndicator(
-        onRefresh: _refreshData, 
+        onRefresh: _refreshData,
         child: CustomScrollView(
           slivers: [
             //Carrossel com descontos
@@ -44,7 +48,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   final motelState = ref.watch(motelProvider);
                   return motelState.when(
                     data: (moteis) => DiscountSuitesCarousel(moteis: moteis),
-                    loading: () => _buildShimmerCarousel(), 
+                    loading: () => _buildShimmerCarousel(),
                     error: (_, __) => SizedBox.shrink(),
                   );
                 },
@@ -63,7 +67,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   final motelState = ref.watch(motelProvider);
                   return motelState.when(
                     data: (moteis) => MotelList(),
-                    loading: () => _buildShimmerList(), 
+                    loading: () => _buildShimmerList(),
                     error: (_, __) => SizedBox.shrink(),
                   );
                 },
@@ -76,7 +80,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   final motelState = ref.watch(motelProvider);
                   return motelState.when(
                     data: (moteis) => DiscountSuitesList(moteis: moteis),
-                    loading: () => _buildShimmerCarousel(), 
+                    loading: () => _buildShimmerCarousel(),
                     error: (_, __) => SizedBox.shrink(),
                   );
                 },

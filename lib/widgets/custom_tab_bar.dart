@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:motel_guide/core/theme/app_theme.dart';
 
 class CustomTabBar extends StatefulWidget {
   final Function(int) onTabSelected;
@@ -24,7 +25,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
           clipper: TabBarClipper(),
           child: Container(
             padding: EdgeInsets.only(top: extraPadding, left: 10, right: 10, bottom: 5),
-            color: const Color.fromARGB(255, 255, 17, 0),
+            color: AppTheme.primaryColor,
             child: Column(
               children: [
                 Padding(
@@ -37,7 +38,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
                       }),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.red[900],
+                          color: AppTheme.secondaryColor,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Row(
@@ -69,10 +70,10 @@ class _CustomTabBarState extends State<CustomTabBar> {
                     children: [
                       Text(
                         "São Paulo",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: AppTheme.backgroundColor),
                       ),
                       SizedBox(width: 5),
-                      Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 22),
+                      Icon(Icons.keyboard_arrow_down, color: AppTheme.backgroundColor, size: 22),
                     ],
                   ),
                 ),
@@ -97,17 +98,17 @@ class _CustomTabBarState extends State<CustomTabBar> {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.white : Colors.red[900],
+          color: isSelected ? AppTheme.backgroundColor : AppTheme.secondaryColor,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
           children: [
-            Icon(icon, size: 20, color: isSelected ? const Color.fromARGB(255, 255, 0, 0) : Colors.white),
+            Icon(icon, size: 20, color: isSelected ? AppTheme.primaryColor : AppTheme.backgroundColor),
             SizedBox(width: 5),
             Text(
               text,
               style: TextStyle(
-                color: isSelected ? Colors.black : Colors.white,
+                color: isSelected ? Colors.black : AppTheme.backgroundColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -123,7 +124,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
       onTap: onPressed,
       child: Container(
         padding: EdgeInsets.all(10),
-        child: Icon(icon, size: 30, color: Colors.white),
+        child: Icon(icon, size: 30, color: AppTheme.backgroundColor),
       ),
     );
   }
