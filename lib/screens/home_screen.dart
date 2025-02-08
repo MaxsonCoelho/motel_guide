@@ -30,12 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: CustomScrollView(
         slivers: [
-          // TabBar personalizada
-          SliverPersistentHeader(
-            pinned: true,
-            floating: false,
-            delegate: StickyFilterBar(),
-          ),
           // Carrossel com descontos
           SliverToBoxAdapter(
             child: Consumer(
@@ -47,6 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
+          ),
+          // FilterBar personalizada
+          SliverPersistentHeader(
+            pinned: true,
+            floating: false,
+            delegate: StickyFilterBar(),
           ),
           // Lista de hotéis com suítes
           SliverToBoxAdapter(
