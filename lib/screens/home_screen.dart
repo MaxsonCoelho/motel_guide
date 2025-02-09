@@ -26,7 +26,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final theme = ref.watch(themeProvider);
 
-    double appBarHeight = Platform.isAndroid ? 120 : 100;
+    double appBarHeight = Platform.isAndroid ? 115 : 100;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
