@@ -38,7 +38,7 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: EdgeInsets.all(10), 
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0), 
       child: Container(
         padding: EdgeInsets.all(10),
         color: Colors.white, 
@@ -46,7 +46,7 @@ class _DiscountSuitesListState extends State<DiscountSuitesList> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Text(
                 "🔥 Descontos Incríveis",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),

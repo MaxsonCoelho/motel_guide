@@ -17,19 +17,19 @@ class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
     double topPadding = MediaQuery.of(context).padding.top;
-    double extraPadding = Platform.isIOS && topPadding > 30 ? 60 : 25;
+    double extraPadding = Platform.isIOS && topPadding > 30 ? 60 : 40;
 
     return Column(
       children: [
         ClipPath(
           clipper: TabBarClipper(),
           child: Container(
-            padding: EdgeInsets.only(top: extraPadding, left: 10, right: 10, bottom: 5),
+            padding: EdgeInsets.only(top: extraPadding, left: 10, right: 10, bottom: 10),
             color: AppTheme.primaryColor,
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: Platform.isAndroid ? 5 : 0), 
+                  padding: EdgeInsets.only(top: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -62,7 +62,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
                     ],
                   ),
                 ),
-                SizedBox(height: 17),
+                SizedBox(height: 15),
                 GestureDetector(
                   onTap: () {},
                   child: Row(

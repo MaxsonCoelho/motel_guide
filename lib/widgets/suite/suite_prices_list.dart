@@ -68,7 +68,6 @@ class SuitePricesList extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 40,
                   alignment: Alignment.centerRight,
                   child: Icon(Icons.keyboard_arrow_right, size: 22, color: Colors.black54),
                 ),

@@ -1,3 +1,4 @@
+import 'dart:io'; 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:motel_guide/providers/motel_provider.dart';
@@ -25,10 +26,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final theme = ref.watch(themeProvider);
 
+    double appBarHeight = Platform.isAndroid ? 120 : 100;
+
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
+      //TabBar personalizada
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100),
+        preferredSize: Size.fromHeight(appBarHeight),
         child: CustomTabBar(
           onTabSelected: (index) {
             setState(() {

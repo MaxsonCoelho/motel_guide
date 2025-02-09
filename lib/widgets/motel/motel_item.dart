@@ -27,7 +27,7 @@ class _MotelItemState extends State<MotelItem> {
               Stack(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.only(top: 10.0, left: 0.0, right: 10.0, bottom: 0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [

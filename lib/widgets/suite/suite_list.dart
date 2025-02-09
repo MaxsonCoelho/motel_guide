@@ -1,3 +1,4 @@
+import 'dart:io'; 
 import 'package:flutter/material.dart';
 import '../../models/suite_model.dart';
 import 'suite_item.dart';
@@ -18,8 +19,12 @@ class _SuiteListState extends State<SuiteList> {
 
   @override
   Widget build(BuildContext context) {
+    double height = Platform.isAndroid 
+        ? MediaQuery.of(context).size.height * 0.73
+        : MediaQuery.of(context).size.height * 0.63; 
+
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.63,
+      height: height, 
       child: PageView.builder(
         controller: _pageController,
         itemCount: widget.suites.length,
