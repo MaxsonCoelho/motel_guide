@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:motel_guide/providers/motel_provider.dart';
 import 'package:motel_guide/providers/theme_provider.dart';
+import 'package:motel_guide/widgets/map_floating_action_button.dart';
 import 'package:motel_guide/widgets/suite/discount_suites_carousel.dart';
 import 'package:motel_guide/widgets/suite/discount_suites_list.dart';
 import 'package:motel_guide/widgets/filter_bar.dart';
@@ -25,12 +26,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = ref.watch(themeProvider);
-
     double appBarHeight = Platform.isAndroid ? 115 : 100;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      //TabBar personalizada
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(appBarHeight),
         child: CustomTabBar(
@@ -45,7 +44,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         onRefresh: _refreshData,
         child: CustomScrollView(
           slivers: [
-            //Carrossel com descontos
             SliverToBoxAdapter(
               child: Consumer(
                 builder: (context, ref, _) {
@@ -58,13 +56,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 },
               ),
             ),
-            //FilterBar personalizada
             SliverPersistentHeader(
               pinned: true,
               floating: false,
               delegate: StickyFilterBar(),
             ),
-            //Lista de hotéis com suítes
             SliverToBoxAdapter(
               child: Consumer(
                 builder: (context, ref, _) {
@@ -77,7 +73,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 },
               ),
             ),
-            //Carrossel com descontos incríveis
             SliverToBoxAdapter(
               child: Consumer(
                 builder: (context, ref, _) {
@@ -96,10 +91,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat, 
+      floatingActionButton: MapaFloatingButton(
+        onPressed: () {
+          print("Botão de Mapa pressionado!");
+        },
+      ),
     );
   }
 
-  //Shimmer para o Carrossel
   Widget _buildShimmerCarousel() {
     return Container(
       height: 230,
@@ -111,7 +111,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  //Shimmer para a Lista de Motéis
   Widget _buildShimmerList() {
     return Column(
       children: List.generate(5, (index) {
