@@ -87,10 +87,17 @@ O projeto segue Clean Architecture, separando camadas de apresentação, domíni
 ✔ Dependency Inversion Principle (DIP): Dependências são injetadas, evitando acoplamento excessivo.
 
 📌 Recursos do App
-Tema Responsivo com suporte a modo claro e escuro
+Tema Responsivo com suporte a modo claro e escuro(configuração de temas)
 Carrossel Automático de suítes com descontos
 Lista interativa de motéis com animações e pré-carregamento (Shimmer)
 Testes automatizados de widgets e unitários
 Gerenciamento de estado eficiente com Riverpod
 Animações suaves na tela de preload
 Integração com APIs (mockadas para este projeto)
+
+
+📌 Vídeos do app em funcionamento
+Versão android
+https://youtube.com/shorts/dr1Y8aUhiwU?feature=share
+Versão ios
+https://youtube.com/shorts/-7iciakI5i4?feature=share
