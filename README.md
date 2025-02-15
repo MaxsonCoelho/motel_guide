@@ -101,3 +101,7 @@ Versão android
 https://youtube.com/shorts/dr1Y8aUhiwU?feature=share
 Versão ios
 https://youtube.com/shorts/-7iciakI5i4?feature=share
+
+Devido a falta de qualidade do vídeo postado no youtube também coloquei os vídeos para baixar ou assitir nesse link do drive
+https://drive.google.com/drive/folders/15OfGzF9LrnVjXCZjGLrdODoAlReY-vYJ?usp=sharing
+
